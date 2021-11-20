@@ -9,10 +9,10 @@ public class Elettore {
 	private /*@ non_null @*/ String nome;
 	private /*@ non_null @*/ String cognome;
 	
-	/*@ public invariant (dataDiNascita.getYear() + 18) < Date.now().getYear() || 
-	  @ (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() < Date.now().getMonth() 
-	  @ || (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() == Date.now().getMonth()
-	  @														   && dataDiNascita.getDay() < Date.now().getDay();
+	/*@ public invariant (dataDiNascita.getYear() + 18) < oggi.getYear() || 
+	  @ (dataDiNascita.getYear() + 18) == oggi.getYear() && dataDiNascita.getMonth() < oggi.getMonth() 
+	  @ || (dataDiNascita.getYear() + 18) == oggi.getYear() && dataDiNascita.getMonth() == oggi.getMonth()
+	  @														   && dataDiNascita.getDay() < oggi.getDay();
 	  @*/
 	private /*@ spec_public @*/ Date dataDiNascita;
 	private /*@ spec_public @*/ String comuneDiNascita;
@@ -51,8 +51,7 @@ public class Elettore {
 		this.oggi = new Date();
 	}
 
-	/*@ requires !voto ; assignable voto;
-	  @*/
+	/*@ requires !voto; @*/
 	public void esprimi_voto() {
 		this.voto = true;
 	}
