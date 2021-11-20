@@ -1,7 +1,22 @@
 package assignment3;
 
-import dates.Date;
-import dates.InvalidDateException;
+import java.util.Calendar;
+
+class Date {
+	/* OVERVIEW:
+	 * Questa classe contene varie informazioni e funzioni riguardanti le date.
+	 */
+	public int day;
+	public int month;
+	public int year;
+	
+	public Date(int day, int month, int year){
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+	
+}
 
 public class Elettore {
 	
@@ -27,14 +42,13 @@ public class Elettore {
 	  @						( \forall int i; i>=0 && i<16 ; Character.isDigit(codiceFiscale[i])
 	  @                     || Character.isAlphabetic(codiceFiscale[i]) );
 	  @*/
-	
 	private /*@ spec_public@*/ char[] codiceFiscale;
 	
 	// Se l'utente ha gia' espresso il voto ha valore true
 	private /*@ spec_public @*/ boolean voto;
 
 	public Elettore(String nome, String cognome, int giorno, int mese, int anno, String sesso,
-			String comuneDiNascita, String nazioneDiNascita, char[] codiceFiscale) throws InvalidDateException {
+			String comuneDiNascita, String nazioneDiNascita, char[] codiceFiscale) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = new Date(giorno, mese, anno);
@@ -42,17 +56,27 @@ public class Elettore {
 		this.comuneDiNascita = comuneDiNascita;
 		this.nazioneDiNascita = nazioneDiNascita;
 		this.codiceFiscale = codiceFiscale;
-		this.oggi = new Date();
+		this.oggi = new Date(17, 11, 2021);
 	}
+	
 
-	/*@ requires !voto 								&& 
-	  @ 	(dataDiNascita.year + 18) < oggi.year 	
-	  	||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month < oggi.month) 
-	    ||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month == oggi.month 
-	    											&&  dataDiNascita.day < oggi.day);
-	  @*/
+	// @ requires !voto 								&& 
+	// @ (dataDiNascita.year + 18) < oggi.year 	
+	// @  	||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month < oggi.month) 
+	// @    ||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month == oggi.month 
+	// @   											&&  dataDiNascita.day < oggi.day);
+	
+	//@ requires false;
 	public void esprimi_voto() {
 		this.voto = true;
+	}
+	
+	
+	public static void main(String[] argv) {
+			Elettore elettore = new Elettore("Dianka Mevan", "Fernando", 4, 10, 1582, "M", "Milano", "Italia", null);
+			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 2020, "J", "Milano", "Italia", null);
+			elettore2.esprimi_voto();
+			elettore2.esprimi_voto();
 	}
 
 }
