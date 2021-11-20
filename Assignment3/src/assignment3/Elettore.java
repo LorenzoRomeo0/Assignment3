@@ -4,7 +4,8 @@ import dates.Date;
 import dates.InvalidDateException;
 
 public class Elettore {
-
+	private Date oggi;
+	
 	private /*@ non_null @*/ String nome;
 	private /*@ non_null @*/ String cognome;
 	
@@ -47,6 +48,7 @@ public class Elettore {
 		this.comuneDiNascita = comuneDiNascita;
 		this.nazioneDiNascita = nazioneDiNascita;
 		this.codiceFiscale = codiceFiscale;
+		this.oggi = new Date();
 	}
 
 	/*@ requires !voto ; assignable voto;
