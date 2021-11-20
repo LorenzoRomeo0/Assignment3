@@ -60,23 +60,23 @@ public class Elettore {
 	}
 	
 
-	// @ requires !voto 								&& 
-	// @ (dataDiNascita.year + 18) < oggi.year 	
-	// @  	||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month < oggi.month) 
-	// @    ||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month == oggi.month 
-	// @   											&&  dataDiNascita.day < oggi.day);
-	
-	//@ requires false;
+	/*@ requires !voto 								&& 
+	  @ (dataDiNascita.year + 18) < oggi.year 	
+	  @  	||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month < oggi.month) 
+	  @     ||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month == oggi.month 
+	  @   											&&  dataDiNascita.day < oggi.day);
+	  @*/
 	public void esprimi_voto() {
 		this.voto = true;
 	}
 	
 	
 	public static void main(String[] argv) {
-			Elettore elettore = new Elettore("Dianka Mevan", "Fernando", 4, 10, 1582, "M", "Milano", "Italia", null);
-			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 2020, "J", "Milano", "Italia", null);
+		char[] f1 = {'A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A'};
+			//Elettore elettore = new Elettore("Dianka Mevan", "Fernando", 4, 10, 2020, "J", "Milano", "Italia", f1);
+			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
 			elettore2.esprimi_voto();
-			elettore2.esprimi_voto();
+			//elettore2.esprimi_voto();
 	}
 
 }
