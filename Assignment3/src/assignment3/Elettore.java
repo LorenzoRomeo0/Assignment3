@@ -1,11 +1,6 @@
 package assignment3;
 
-import java.util.Calendar;
-
 class Date {
-	/* OVERVIEW:
-	 * Questa classe contene varie informazioni e funzioni riguardanti le date.
-	 */
 	public int day;
 	public int month;
 	public int year;
@@ -60,11 +55,11 @@ public class Elettore {
 	}
 	
 
-	/*@ requires !voto 								&& 
+	/*@ requires !voto 									&& 
 	  @ (dataDiNascita.year + 18) < oggi.year 	
 	  @  	||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month < oggi.month) 
 	  @     ||  ((dataDiNascita.year + 18) == oggi.year &&  dataDiNascita.month == oggi.month 
-	  @   											&&  dataDiNascita.day < oggi.day);
+	  @   												&&  dataDiNascita.day < oggi.day);
 	  @*/
 	public void esprimi_voto() {
 		this.voto = true;
