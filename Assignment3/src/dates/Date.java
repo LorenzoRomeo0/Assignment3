@@ -3,17 +3,17 @@ package dates;
 import java.util.Calendar;
 
 public class Date {
+	/* OVERVIEW:
+	 * Questa classe contene varie informazioni e funzioni riguardanti le date.
+	 */
+	
 	private final int GREGORIAN_DAY_INTRO = 4;
 	private final int GREGORIAN_MONTH_INTRO = 10;
 	private final int GREGORIAN_YEAR_INTRO = 1582;
 
-	private /* @ spec_public @ */ int day;
-	private /* @ spec_public @ */ int month;
-	private /* @ spec_public @ */ int year;
-
-	public /* @ pure @ */ int getDay() {
-		return day;
-	}
+	public int day;
+	public int month;
+	public int year;
 
 	public void setDay(int day) throws InvalidDateException {
 		InvalidDateException e = check(day, this.month, this.year);
@@ -22,19 +22,11 @@ public class Date {
 		this.day = day;
 	}
 
-	public /* @ pure @ */ int getMonth() {
-		return month;
-	}
-
 	public void setMonth(int month) throws InvalidDateException {
 		InvalidDateException e = check(this.day, month, this.year);
 		if (e != null)
 			throw e;
 		this.month = month;
-	}
-
-	public /* @ pure @ */ int getYear() {
-		return year;
 	}
 
 	public void setYear(int year) throws InvalidDateException {
@@ -53,6 +45,7 @@ public class Date {
 		this.year = year;
 	}
 	
+	//EFFECTS: Questo costruttore nullo inizializza le variabili con i valori correnti ricavati dalla classe Calendar.
 	public Date() {
 		now();
 	}
@@ -74,11 +67,11 @@ public class Date {
 		return e;
 	}
 
-	public /* @ pure @ */ void now() {
+	public void now() {
 		Calendar today = Calendar.getInstance();
 		this.day = today.get(Calendar.DAY_OF_MONTH);
 		this.month = today.get(Calendar.MONTH);
 		this.year = today.get(Calendar.YEAR);
-		
 	}
+	
 }
