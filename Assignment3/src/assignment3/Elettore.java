@@ -1,18 +1,18 @@
 package assignment3;
+
 import dates.Date;
 import dates.InvalidDateException;
 
 public class Elettore {
-	public enum Sesso {M, F};
 
 	private /*@ non_null @*/ String nome;
 	private /*@ non_null @*/ String cognome;
 	
-	/* @ public invariant (dataDiNascita.getYear() + 18) < Date.now().getYear() || 
-	   @ (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() < Date.now().getMonth()|| 
-	   @ (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() == Date.now().getMonth() 
-	   @														   && dataDiNascita.getDay() < Date.now().getDay();
-	   @*/
+	/*@ public invariant (dataDiNascita.getYear() + 18) < Date.now().getYear() || 
+	  @ (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() < Date.now().getMonth() 
+	  @ || (dataDiNascita.getYear() + 18) == Date.now().getYear() && dataDiNascita.getMonth() == Date.now().getMonth()
+	  @														   && dataDiNascita.getDay() < Date.now().getDay();
+	  @*/
 	private /*@ spec_public @*/ Date dataDiNascita;
 	private /*@ spec_public @*/ String comuneDiNascita;
 
@@ -21,8 +21,8 @@ public class Elettore {
 	  @*/
 	private /*@ spec_public @*/ String nazioneDiNascita;
 
-	/*@ public invariant sesso.equals(Sesso.M) || sesso.equals(Sesso.F); @*/
-	private /*@ spec_public @*/ Sesso sesso;
+	/*@ public invariant sesso.equals("M") || sesso.equals("F"); @*/
+	private /*@ spec_public @*/ String sesso;
 	
 	/*@ public invariant codiceFiscale.length == 16 &&
 	  @ \forall int i; i>=0 && i<codiceFiscale.length ; (Character.isDigit(codiceFiscale[i]) 
@@ -31,14 +31,14 @@ public class Elettore {
 	private /*@ spec_public @*/ char[] codiceFiscale;
 	
 	/**
-	 * ha valore true nel caso in cui l’elettore abbia espresso il suo voto, false
+	 * ha valore true nel caso in cui l'elettore abbia espresso il suo voto, false
 	 * nel caso in cui l’elettore non abbia ancora espresso il voto
 	 * Calendar.getInstance().set(dataDiNascita.add(Calendar.YEAR, 18))
 	 */
 	/*@ public invariant dataDiNascita.getYear()>0; @*/
 	private /*@ spec_public @*/ boolean voto;
 
-	public Elettore(String nome, String cognome, int giorno, int mese, int anno, Sesso sesso,
+	public Elettore(String nome, String cognome, int giorno, int mese, int anno, String sesso,
 			String comuneDiNascita, String nazioneDiNascita, char[] codiceFiscale) throws InvalidDateException {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -49,8 +49,7 @@ public class Elettore {
 		this.codiceFiscale = codiceFiscale;
 	}
 
-	/*@ requires !voto ; assignable voto; 
-
+	/*@ requires !voto ; assignable voto;
 	  @*/
 	public void esprimi_voto() {
 		this.voto = true;
