@@ -1,12 +1,7 @@
 package assignment3;
 
-import java.awt.print.PrinterAbortException;
 import java.util.Arrays;
 
-import javax.lang.model.type.PrimitiveType;
-import javax.swing.MenuSelectionManager;
-
-import org.jmlspecs.annotation.Pure;
 
 class Date {
 	public int day;
