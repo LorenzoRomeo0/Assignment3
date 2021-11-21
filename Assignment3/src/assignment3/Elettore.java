@@ -27,6 +27,11 @@ public class Elettore {
 	private /*@ non_null @*/ String nome;
 	private /*@ non_null @*/ String cognome;
 	
+	/*@ public invariant dataDiNascita.year < oggi.year 	
+	  @  	||  (dataDiNascita.year == oggi.year &&  dataDiNascita.month < oggi.month) 
+	  @     ||  (dataDiNascita.year == oggi.year &&  dataDiNascita.month == oggi.month 
+	  @   										 &&  dataDiNascita.day < oggi.day);
+	  @*/
 	private /*@ spec_public @*/ Date dataDiNascita;
 	private /*@ spec_public @*/ String comuneDiNascita;
 
@@ -82,6 +87,7 @@ public class Elettore {
 		System.out.println("Comune di nascita = "+comuneDiNascita);
 		System.out.println("Codice fiscale = "+Arrays.toString(codiceFiscale));
 		System.out.println("Has voted = "+((voto)?"Yes":"No"));
+		System.out.println("Genere = "+sesso);
 		System.out.println("---");
 	}
 	
@@ -92,7 +98,7 @@ public class Elettore {
 			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
 			
 			//TODO null da errore anche se l'invariante e' rispettata
-			Elettore elettore3 = new Elettore("A", "B", 5, 10, 1800, "M", null, "Svezia", f1);
+			Elettore elettore3 = new Elettore("A", "B", 21, 11, 2021, "M", " ", "Svezia", f1);
 			elettore2.showInfo();
 			elettore2.esprimi_voto();
 			elettore2.showInfo();
