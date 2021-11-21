@@ -47,9 +47,13 @@ public class Elettore {
 	private /*@ spec_public @*/ String sesso;
 	
 	/*@ public invariant 	codiceFiscale.length == 16 &&
-	  @						( \forall int i; i>=0 && i<16 ; Character.isDigit(codiceFiscale[i])
-	  @                     || Character.isAlphabetic(codiceFiscale[i]) )
-	  @						&& \forall int j; j>=0 && j<12 ; Character.toUpperCase(codiceFiscale[j]) == generato.getCodiceFiscale()[j];
+	  @			( \forall int i; i>=0 && i<16 ; Character.isDigit(codiceFiscale[i])
+	  @         || Character.isAlphabetic(codiceFiscale[i]) )
+	  @			&& \forall int j; j>=0 && j<11 ; codiceFiscale[j] == generato.getCodiceFiscale()[j]
+	  @			&& (codiceFiscale[11]=='Z' && !nazioneDiNascita.equals("Italia") || nazioneDiNascita.equals("Italia") && codiceFiscale[11]!='Z' )
+	  @			&& Character.isAlphabetic(codiceFiscale[11]) && Character.isAlphabetic(codiceFiscale[15]) 
+	  @			&& Character.isDigit(codiceFiscale[12]) && Character.isDigit(codiceFiscale[13]) 
+	  @			&& Character.isDigit(codiceFiscale[14]);
 	  @*/
 	private /*@ spec_public@*/ CodiceFiscale generato;
 	private /*@ spec_public@*/ char[] codiceFiscale;
@@ -98,16 +102,17 @@ public class Elettore {
 	
 	
 	public static void main(String[] argv) {
-		char[] f1 = {'A','A','A','A','A','A','A','A','A','A','A','A','A','A','A','A'};
-			//Elettore elettore = new Elettore("Dianka Mevan", "Fernando", 4, 10, 2020, "J", "Milano", "Italia", f1);
-			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
+		//FRNDKM00L23F205A
+		char[] f1 = {'F','R','N','D','K','M','0','0','L','2','3','Z','1','1','1','A'};
+			Elettore elettore1 = new Elettore("Dianka Mevan", "Fernando", 23, 7, 2000, "M", "Milano", "Italia", f1);
+			//Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
 			
-			Elettore elettore3 = new Elettore("A", "B", 16, 11, 2021, "M", " ", "Svezia", f1);
-			elettore2.showInfo();
-			elettore2.esprimi_voto();
-			elettore2.showInfo();
+			//Elettore elettore3 = new Elettore("A", "B", 16, 11, 2021, "M", " ", "Svezia", f1);
+			elettore1.showInfo();
+			elettore1.esprimi_voto();
+			elettore1.showInfo();
 			
-			CodiceFiscale codiceFiscale = new CodiceFiscale("Lorenzo", "romeo", 5, 10, 1800, "M", "Milano", "Italiaa");
+			//CodiceFiscale codiceFiscale = new CodiceFiscale("Lorenzo", "romeo", 5, 10, 1800, "M", "Milano", "Italiaa");
 			//elettore2.esprimi_voto();
 	}
 	
