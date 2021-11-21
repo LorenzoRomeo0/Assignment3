@@ -103,17 +103,30 @@ public class Elettore {
 	
 	public static void main(String[] argv) {
 		//FRNDKM00L23F205A
-		char[] f1 = {'F','R','N','D','K','M','0','0','L','2','3','Z','1','1','1','A'};
-			Elettore elettore1 = new Elettore("Dianka Mevan", "Fernando", 23, 7, 2000, "M", "Milano", "Italia", f1);
-			//Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
-			
-			//Elettore elettore3 = new Elettore("A", "B", 16, 11, 2021, "M", " ", "Svezia", f1);
-			elettore1.showInfo();
-			elettore1.esprimi_voto();
-			elettore1.showInfo();
-			
-			//CodiceFiscale codiceFiscale = new CodiceFiscale("Lorenzo", "romeo", 5, 10, 1800, "M", "Milano", "Italiaa");
-			//elettore2.esprimi_voto();
+		//ZUXYIX00A41F205H
+		//NPLPLG20A01Z353K
+		char[] codDianka = {'F','R','N','D','K','M','0','0','L','2','3','A','1','1','1','A'};
+		char[] codLore = {'R','M','O','L','N','Z','2','1','S','1','8','A','1','1','1','A'};
+		char[] f2 = {'Z','U','X','Y','I','X','0','0','A','4','1','H','1','1','1','A'};
+		char[] f3 = {'N','P','L','P','L','G','2','0','A','4','1','Z','1','1','1','A'};
+		// Elettore che rispetta le invarianti
+		Elettore dianka = new Elettore("Dianka Mevan", "Fernando", 23, 7, 2000, "M", "Milano", "Italia", codDianka);
+		dianka.esprimi_voto();
+		dianka.showInfo();
+		
+		//dianka.esprimi_voto();
+		
+		
+		// Elettore nato dopo la data odierna
+		//Elettore lorenzo = new Elettore("Lorenzo", "Romeo", 18, 11, 2021, "M", "Milano", "Italia", codLore);
+		
+		// Elettore con nome di meno di 3 lettere, femmina
+		Elettore elettore2 = new Elettore("Yi", "Zu", 1, 1, 2000, "F", "Milano", "Italia", f2);
+		
+		//Elettore minorenne, nato all'estero
+		Elettore elettore3 = new Elettore("Pier Luigi", "Napoli", 1, 1, 2020, "F", "", "Uganda", f3);
+		
+		//elettore3.esprimi_voto();
 	}
 	
 }
@@ -132,7 +145,7 @@ class CodiceFiscale {
 			} else if(i-(cognomeConsonanti.length()) < cognomeVocali.length()) {
 				codiceFiscale[i] = cognomeVocali.charAt(i-(cognomeConsonanti.length()));
 			} else {
-				codiceFiscale[i] = 'x';
+				codiceFiscale[i] = 'X';
 			}
 		}
 		String nomeConsonanti = getConsonanti(nome);
@@ -149,7 +162,7 @@ class CodiceFiscale {
 				} else if(i-(nomeConsonanti.length()) < nomeVocali.length()) {
 					codiceFiscale[i + 3] = nomeVocali.charAt(i-(nomeConsonanti.length()));
 				} else {
-					codiceFiscale[i + 3] = 'x';
+					codiceFiscale[i + 3] = 'X';
 				}
 			}
 		}
