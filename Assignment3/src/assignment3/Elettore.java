@@ -2,25 +2,6 @@ package assignment3;
 
 import java.util.Arrays;
 
-
-class Date {
-	public int day;
-	public int month;
-	public int year;
-	
-	public Date(int day, int month, int year){
-		this.day = day;
-		this.month = month;
-		this.year = year;
-	}
-	
-	public String toString(){
-		return day+"/"+month+"/"+year;
-	}
-	
-}
-
-
 public class Elettore {
 	
 	//Contiene informazioni riguardanti la data corrente
@@ -102,9 +83,6 @@ public class Elettore {
 	
 	
 	public static void main(String[] argv) {
-		//FRNDKM00L23F205A
-		//ZUXYIX00A41F205H
-		//NPLPLG20A01Z353K
 		char[] codDianka = {'F','R','N','D','K','M','0','0','L','2','3','A','1','1','1','A'};
 		char[] codLore = {'R','M','O','L','N','Z','2','1','S','1','8','A','1','1','1','A'};
 		char[] f2 = {'Z','U','X','Y','I','X','0','0','A','4','1','H','1','1','1','A'};
@@ -114,19 +92,38 @@ public class Elettore {
 		dianka.esprimi_voto();
 		dianka.showInfo();
 		
-		//dianka.esprimi_voto();
+		// Seconda votazione (Solleva errore!)
+		// dianka.esprimi_voto();
 		
 		
-		// Elettore nato dopo la data odierna
-		//Elettore lorenzo = new Elettore("Lorenzo", "Romeo", 18, 11, 2021, "M", "Milano", "Italia", codLore);
+		// Elettore nato dopo la data odierna (17/11/21)
+		// Elettore lorenzo = new Elettore("Lorenzo", "Romeo", 18, 11, 2021, "M", "Milano", "Italia", codLore);
 		
 		// Elettore con nome di meno di 3 lettere, femmina
 		Elettore elettore2 = new Elettore("Yi", "Zu", 1, 1, 2000, "F", "Milano", "Italia", f2);
 		
-		//Elettore minorenne, nato all'estero
+		// Elettore minorenne, nato all'estero
 		Elettore elettore3 = new Elettore("Pier Luigi", "Napoli", 1, 1, 2020, "F", "", "Uganda", f3);
 		
-		//elettore3.esprimi_voto();
+		// Votazione elettore minorenne
+		// elettore3.esprimi_voto();
+	}
+	
+}
+
+class Date {
+	public int day;
+	public int month;
+	public int year;
+	
+	public Date(int day, int month, int year){
+		this.day = day;
+		this.month = month;
+		this.year = year;
+	}
+	
+	public String toString(){
+		return day+"/"+month+"/"+year;
 	}
 	
 }
