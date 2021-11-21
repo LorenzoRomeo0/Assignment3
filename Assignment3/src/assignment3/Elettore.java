@@ -61,7 +61,7 @@ public class Elettore {
 		this.cognome = cognome;
 		this.dataDiNascita = new Date(giorno, mese, anno);
 		this.sesso = sesso;
-		this.comuneDiNascita = (comuneDiNascita == null)?" ":comuneDiNascita;
+		this.comuneDiNascita = (comuneDiNascita == null || comuneDiNascita.equals("") )?" ":comuneDiNascita;
 		this.nazioneDiNascita = nazioneDiNascita;
 		this.codiceFiscale = codiceFiscale;
 		this.oggi = new Date(17, 11, 2021);
@@ -97,8 +97,7 @@ public class Elettore {
 			//Elettore elettore = new Elettore("Dianka Mevan", "Fernando", 4, 10, 2020, "J", "Milano", "Italia", f1);
 			Elettore elettore2 = new Elettore("Lorenzo", "Romeo", 5, 10, 1800, "M", "Milano", "Italia", f1);
 			
-			//TODO null da errore anche se l'invariante e' rispettata
-			Elettore elettore3 = new Elettore("A", "B", 21, 11, 2021, "M", " ", "Svezia", f1);
+			Elettore elettore3 = new Elettore("A", "B", 16, 11, 2021, "M", " ", "Svezia", f1);
 			elettore2.showInfo();
 			elettore2.esprimi_voto();
 			elettore2.showInfo();
